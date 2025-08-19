@@ -1,681 +1,833 @@
-// Dados de recomendação NPK do manual RS/SC
+// Dados das tabelas de interpretação e recomendação
 const NPK_DATA = {
-    "interpretacao_P": {
-        "argila_0_20": {
-            "muito_baixo": [0, 3.0],
-            "baixo": [3.1, 6.0],
-            "medio": [6.1, 12.0],
-            "alto": [12.1, 18.0],
-            "muito_alto": [18.1, 999]
-        },
-        "argila_21_40": {
-            "muito_baixo": [0, 5.0],
-            "baixo": [5.1, 10.0],
-            "medio": [10.1, 20.0],
-            "alto": [20.1, 30.0],
-            "muito_alto": [30.1, 999]
-        },
-        "argila_41_60": {
-            "muito_baixo": [0, 8.0],
-            "baixo": [8.1, 16.0],
-            "medio": [16.1, 32.0],
-            "alto": [32.1, 48.0],
-            "muito_alto": [48.1, 999]
-        },
-        "argila_maior_60": {
-            "muito_baixo": [0, 10.0],
-            "baixo": [10.1, 20.0],
-            "medio": [20.1, 40.0],
-            "alto": [40.1, 60.0],
-            "muito_alto": [60.1, 999]
-        }
+  interpretacao_P: {
+    argila_0_20: {
+      muito_baixo: [0, 3.0],
+      baixo: [3.1, 6.0], 
+      medio: [6.1, 12.0],
+      alto: [12.1, 18.0],
+      muito_alto: [18.1, 999]
     },
-    "interpretacao_K": {
-        "CTC_baixa_0_5": {
-            "muito_baixo": [0, 15],
-            "baixo": [16, 30],
-            "medio": [31, 60],
-            "alto": [61, 90],
-            "muito_alto": [91, 999]
-        },
-        "CTC_media_5_15": {
-            "muito_baixo": [0, 20],
-            "baixo": [21, 40],
-            "medio": [41, 80],
-            "alto": [81, 120],
-            "muito_alto": [121, 999]
-        },
-        "CTC_alta_maior_15": {
-            "muito_baixo": [0, 25],
-            "baixo": [26, 50],
-            "medio": [51, 100],
-            "alto": [101, 150],
-            "muito_alto": [151, 999]
-        }
+    argila_21_40: {
+      muito_baixo: [0, 5.0],
+      baixo: [5.1, 10.0],
+      medio: [10.1, 20.0], 
+      alto: [20.1, 30.0],
+      muito_alto: [30.1, 999]
     },
-    "interpretacao_MO": {
-        "muito_baixo": [0, 2.5],
-        "baixo": [2.6, 5.0],
-        "medio": [5.1, 10.0],
-        "alto": [10.1, 20.0],
-        "muito_alto": [20.1, 100]
+    argila_41_60: {
+      muito_baixo: [0, 8.0],
+      baixo: [8.1, 16.0],
+      medio: [16.1, 32.0],
+      alto: [32.1, 48.0], 
+      muito_alto: [48.1, 999]
     },
-    "recomendacoes_NPK": {
-        "Soja": {
-            "N": {
-                "pos_leguminosa": 20,
-                "pos_graminea": 20,
-                "base": 20
-            },
-            "P2O5": {
-                "muito_baixo": [120, 80],
-                "baixo": [80, 60],
-                "medio": [70, 40],
-                "alto": [40, 40],
-                "muito_alto": [0, 40]
-            },
-            "K2O": {
-                "muito_baixo": [90, 60],
-                "baixo": [60, 40],
-                "medio": [50, 25],
-                "alto": [25, 25],
-                "muito_alto": [0, 25]
-            },
-            "rendimento_ref": 3.0,
-            "exportacao": { "P2O5": 15, "K2O": 20 }
-        },
-        "Milho": {
-            "N": {
-                "pos_leguminosa": 100,
-                "pos_graminea": 150,
-                "base": 150
-            },
-            "P2O5": {
-                "muito_baixo": [140, 90],
-                "baixo": [90, 70],
-                "medio": [80, 45],
-                "alto": [45, 45],
-                "muito_alto": [0, 45]
-            },
-            "K2O": {
-                "muito_baixo": [100, 70],
-                "baixo": [70, 50],
-                "medio": [60, 30],
-                "alto": [30, 30],
-                "muito_alto": [0, 30]
-            },
-            "rendimento_ref": 8.0,
-            "exportacao": { "P2O5": 15, "K2O": 10 }
-        },
-        "Trigo": {
-            "N": {
-                "pos_leguminosa": 60,
-                "pos_graminea": 80,
-                "base": 80
-            },
-            "P2O5": {
-                "muito_baixo": [155, 95],
-                "baixo": [95, 75],
-                "medio": [85, 45],
-                "alto": [45, 45],
-                "muito_alto": [0, 45]
-            },
-            "K2O": {
-                "muito_baixo": [110, 70],
-                "baixo": [70, 50],
-                "medio": [60, 30],
-                "alto": [30, 30],
-                "muito_alto": [0, 30]
-            },
-            "rendimento_ref": 3.0,
-            "exportacao": { "P2O5": 15, "K2O": 10 }
-        },
-        "Arroz irrigado": {
-            "N": {
-                "pos_leguminosa": 90,
-                "pos_graminea": 120,
-                "base": 120
-            },
-            "P2O5": {
-                "muito_baixo": [120, 80],
-                "baixo": [80, 60],
-                "medio": [70, 40],
-                "alto": [40, 40],
-                "muito_alto": [0, 40]
-            },
-            "K2O": {
-                "muito_baixo": [90, 60],
-                "baixo": [60, 40],
-                "medio": [50, 25],
-                "alto": [25, 25],
-                "muito_alto": [0, 25]
-            },
-            "rendimento_ref": 7.0,
-            "exportacao": { "P2O5": 12, "K2O": 10 }
-        }
+    argila_maior_60: {
+      muito_baixo: [0, 10.0],
+      baixo: [10.1, 20.0],
+      medio: [20.1, 40.0],
+      alto: [40.1, 60.0],
+      muito_alto: [60.1, 999]
     }
+  },
+  interpretacao_K: {
+    CTC_baixa_0_5: {
+      muito_baixo: [0, 15],
+      baixo: [16, 30],
+      medio: [31, 60], 
+      alto: [61, 90],
+      muito_alto: [91, 999]
+    },
+    CTC_media_5_15: {
+      muito_baixo: [0, 20],
+      baixo: [21, 40],
+      medio: [41, 80],
+      alto: [81, 120],
+      muito_alto: [121, 999]
+    },
+    CTC_alta_maior_15: {
+      muito_baixo: [0, 25],
+      baixo: [26, 50], 
+      medio: [51, 100],
+      alto: [101, 150],
+      muito_alto: [151, 999]
+    }
+  },
+  correcao_P2O5: {
+    muito_baixo: 160,
+    baixo: 80,
+    medio: 40,
+    alto: 0,
+    muito_alto: 0
+  },
+  correcao_K2O: {
+    muito_baixo: 120,
+    baixo: 60,
+    medio: 30,
+    alto: 0,
+    muito_alto: 0
+  },
+  exportacao_culturas: {
+    "Soja": {"P2O5": 15, "K2O": 25},
+    "Milho": {"P2O5": 15, "K2O": 10},
+    "Trigo": {"P2O5": 15, "K2O": 10},
+    "Arroz irrigado": {"P2O5": 10, "K2O": 10}
+  },
+  recomendacao_N: {
+    "Milho": {
+      doses_base: {
+        leguminosa: [70, 50, 40],
+        consorciacao: [80, 60, 40], 
+        graminea: [90, 70, 50]
+      },
+      rendimento_base: 6,
+      incremento_por_tonelada: 15
+    },
+    "Soja": {
+      doses_base: {
+        leguminosa: [20, 15, 10],
+        consorciacao: [20, 15, 10],
+        graminea: [20, 15, 10]
+      },
+      rendimento_base: 3,
+      incremento_por_tonelada: 5
+    },
+    "Trigo": {
+      doses_base: {
+        leguminosa: [60, 40, 30],
+        consorciacao: [70, 50, 40],
+        graminea: [80, 60, 50]
+      },
+      rendimento_base: 3,
+      incremento_por_tonelada: 15
+    },
+    "Arroz irrigado": {
+      doses_base: {
+        leguminosa: [90, 70, 60],
+        consorciacao: [110, 90, 80],
+        graminea: [120, 100, 90]
+      },
+      rendimento_base: 7,
+      incremento_por_tonelada: 15
+    }
+  }
 };
 
-// Estado da aplicação
-let appState = {
-    samples: [],
-    sampleCounter: 0
-};
+// Variáveis globais
+let samples = [];
+let sampleCounter = 0;
+let calculatedResults = [];
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
-    setupEventListeners();
-    updateSampleCounter();
+  updateSampleCount();
+  console.log('Sistema NPK inicializado');
 });
 
-function setupEventListeners() {
-    // Listeners para configurações globais
-    const globalFields = ['municipio', 'fazenda', 'talhao', 'cultura', 'sistema_manejo', 'area_total', 'expectativa_produtividade'];
-    globalFields.forEach(field => {
-        const element = document.getElementById(field);
-        if (element) {
-            element.addEventListener('input', validateGlobalConfig);
-            element.addEventListener('change', validateGlobalConfig);
-        }
-    });
-}
-
-// Função para toggle do "Como usar"
+// Funções de UI
 function toggleHowTo() {
-    const content = document.getElementById('howToContent');
-    const toggle = document.querySelector('.how-to-toggle');
-
-    if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        toggle.classList.add('active');
-    } else {
-        content.classList.add('hidden');
-        toggle.classList.remove('active');
-    }
+  const content = document.getElementById('how-to-content');
+  const icon = document.getElementById('toggle-icon');
+  
+  if (content.classList.contains('open')) {
+    content.classList.remove('open');
+    icon.textContent = '▼';
+  } else {
+    content.classList.add('open');
+    icon.textContent = '▲';
+  }
 }
 
-// Função para adicionar nova amostra
 function addSample() {
-    if (appState.samples.length >= 100) {
-        alert('Limite máximo de 100 amostras atingido.');
-        return;
-    }
-
-    appState.sampleCounter++;
-    const sampleId = appState.sampleCounter;
-
-    const sample = {
-        id: sampleId,
-        local: '',
-        ph: '',
-        mo: '',
-        p: '',
-        k: '',
-        ca: '',
-        mg: '',
-        al: '',
-        ctc: '',
-        argila: '',
-        results: null
-    };
-
-    appState.samples.push(sample);
-    renderSample(sample);
-    updateSampleCounter();
+  console.log('Adicionando amostra...');
+  
+  if (samples.length >= 100) {
+    showAlert('Limite máximo', 'Não é possível adicionar mais de 100 amostras.');
+    return;
+  }
+  
+  sampleCounter++;
+  const sampleId = `amostra-${sampleCounter}`;
+  
+  const sample = {
+    id: sampleId,
+    local: '',
+    ph: '',
+    materia_organica: '',
+    p_disponivel: '',
+    k_disponivel: '',
+    ca_trocavel: '',
+    mg_trocavel: '',
+    al_trocavel: '',
+    ctc_ph7: '',
+    argila: ''
+  };
+  
+  samples.push(sample);
+  renderSample(sample);
+  updateSampleCount();
+  
+  console.log(`Amostra ${sampleId} adicionada. Total: ${samples.length}`);
 }
 
-// Função para renderizar uma amostra
 function renderSample(sample) {
-    const container = document.getElementById('samplesContainer');
-
-    const sampleDiv = document.createElement('div');
-    sampleDiv.className = 'sample-card';
-    sampleDiv.id = `sample-${sample.id}`;
-
-    sampleDiv.innerHTML = `
+  const container = document.getElementById('samples-container');
+  
+  if (!container) {
+    console.error('Container de amostras não encontrado');
+    return;
+  }
+  
+  const sampleDiv = document.createElement('div');
+  sampleDiv.className = 'sample-card';
+  sampleDiv.id = `sample-${sample.id}`;
+  
+  sampleDiv.innerHTML = `
     <div class="sample-header">
-      <h3 class="sample-title">Amostra ${sample.id}</h3>
-      <button class="remove-sample" onclick="removeSample(${sample.id})" title="Remover amostra">×</button>
+      <h4>Amostra ${sample.id.split('-')[1]}</h4>
+      <button class="sample-remove" onclick="removeSample('${sample.id}')">❌</button>
     </div>
-    <div class="sample-content">
-      <div class="sample-inputs">
+    <div class="sample-body">
+      <div class="sample-grid">
         <div class="form-group">
           <label class="form-label">ID/Local da Amostra *</label>
-          <input type="text" id="local-${sample.id}" class="form-control" placeholder="Ex: Quadra A" oninput="updateSampleField(${sample.id}, 'local', this.value)">
+          <input type="text" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="local" 
+                 placeholder="Ex: Talhão A1" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
           <label class="form-label">pH em água *</label>
-          <input type="number" id="ph-${sample.id}" class="form-control" step="0.1" min="3" max="9" placeholder="Ex: 6.2" oninput="updateSampleField(${sample.id}, 'ph', this.value)">
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="ph" 
+                 placeholder="Ex: 6.5" 
+                 step="0.01" 
+                 min="0" 
+                 max="14" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">Matéria Orgânica (%) *</label>
-          <input type="number" id="mo-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 3.5" oninput="updateSampleField(${sample.id}, 'mo', this.value)">
+          <label class="form-label">Matéria Orgânica % *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="materia_organica" 
+                 placeholder="Ex: 3.5" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">P disponível (mg/dm³) *</label>
-          <input type="number" id="p-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 12.5" oninput="updateSampleField(${sample.id}, 'p', this.value)">
+          <label class="form-label">P disponível mg/dm³ - Mehlich-1 *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="p_disponivel" 
+                 placeholder="Ex: 15.5" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">K disponível (mg/dm³) *</label>
-          <input type="number" id="k-${sample.id}" class="form-control" step="1" min="0" placeholder="Ex: 85" oninput="updateSampleField(${sample.id}, 'k', this.value)">
+          <label class="form-label">K disponível mg/dm³ - Mehlich-1 *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="k_disponivel" 
+                 placeholder="Ex: 85" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">Ca trocável (cmolc/dm³) *</label>
-          <input type="number" id="ca-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 4.2" oninput="updateSampleField(${sample.id}, 'ca', this.value)">
+          <label class="form-label">Ca trocável cmolc/dm³ *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="ca_trocavel" 
+                 placeholder="Ex: 4.2" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">Mg trocável (cmolc/dm³) *</label>
-          <input type="number" id="mg-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 1.8" oninput="updateSampleField(${sample.id}, 'mg', this.value)">
+          <label class="form-label">Mg trocável cmolc/dm³ *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="mg_trocavel" 
+                 placeholder="Ex: 1.8" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">Al trocável (cmolc/dm³)</label>
-          <input type="number" id="al-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 0.2" oninput="updateSampleField(${sample.id}, 'al', this.value)">
+          <label class="form-label">Al trocável cmolc/dm³</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="al_trocavel" 
+                 placeholder="Ex: 0.2" 
+                 step="0.01" 
+                 min="0" 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">CTC pH 7.0 (cmolc/dm³) *</label>
-          <input type="number" id="ctc-${sample.id}" class="form-control" step="0.1" min="0" placeholder="Ex: 12.5" oninput="updateSampleField(${sample.id}, 'ctc', this.value)">
+          <label class="form-label">CTC pH 7.0 cmolc/dm³ *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="ctc_ph7" 
+                 placeholder="Ex: 8.5" 
+                 step="0.01" 
+                 min="0" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
         <div class="form-group">
-          <label class="form-label">Argila (%) *</label>
-          <input type="number" id="argila-${sample.id}" class="form-control" step="1" min="0" max="100" placeholder="Ex: 35" oninput="updateSampleField(${sample.id}, 'argila', this.value)">
-        </div>
-      </div>
-      <div class="sample-results" id="results-${sample.id}">
-        <div class="results-title">Resultados</div>
-        <div class="result-item">
-          <span class="result-label">Preencha os campos obrigatórios para ver os resultados</span>
+          <label class="form-label">Argila % *</label>
+          <input type="number" class="form-control" 
+                 data-sample="${sample.id}" 
+                 data-field="argila" 
+                 placeholder="Ex: 35" 
+                 step="0.01" 
+                 min="0" 
+                 max="100" 
+                 required 
+                 onchange="updateSampleData(this)"
+                 oninput="updateSampleData(this)">
         </div>
       </div>
     </div>
   `;
-
-    container.appendChild(sampleDiv);
+  
+  container.appendChild(sampleDiv);
+  
+  // Scroll para a nova amostra
+  sampleDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// Função para atualizar campo da amostra
-function updateSampleField(sampleId, field, value) {
-    const sample = appState.samples.find(s => s.id === sampleId);
-    if (sample) {
-        sample[field] = value;
-        calculateSampleResults(sample);
-    }
-}
-
-// Função para remover amostra
 function removeSample(sampleId) {
-    const sampleIndex = appState.samples.findIndex(s => s.id === sampleId);
-    if (sampleIndex !== -1) {
-        appState.samples.splice(sampleIndex, 1);
-        const element = document.getElementById(`sample-${sampleId}`);
-        if (element) {
-            element.remove();
+  console.log(`Removendo amostra: ${sampleId}`);
+  
+  const index = samples.findIndex(s => s.id === sampleId);
+  if (index !== -1) {
+    samples.splice(index, 1);
+    const sampleElement = document.getElementById(`sample-${sampleId}`);
+    if (sampleElement) {
+      sampleElement.remove();
+    }
+    updateSampleCount();
+    
+    // Remove resultado se existir
+    const resultIndex = calculatedResults.findIndex(r => r.sampleId === sampleId);
+    if (resultIndex !== -1) {
+      calculatedResults.splice(resultIndex, 1);
+      updateResults();
+      updateSummary();
+    }
+    
+    console.log(`Amostra ${sampleId} removida. Total: ${samples.length}`);
+  }
+}
+
+function updateSampleData(input) {
+  const sampleId = input.dataset.sample;
+  const field = input.dataset.field;
+  const value = input.value;
+  
+  const sample = samples.find(s => s.id === sampleId);
+  if (sample) {
+    sample[field] = value;
+    console.log(`Amostra ${sampleId}, campo ${field} atualizado para: ${value}`);
+  }
+  
+  // Remover classe de erro se valor foi preenchido
+  if (value.trim() !== '') {
+    input.classList.remove('error');
+    const errorMsg = input.parentNode.querySelector('.error-message');
+    if (errorMsg) {
+      errorMsg.remove();
+    }
+  }
+}
+
+function clearAll() {
+  if (samples.length === 0) {
+    showAlert('Nenhuma amostra', 'Não há amostras para limpar.');
+    return;
+  }
+  
+  if (confirm('Tem certeza que deseja limpar todas as amostras? Esta ação não pode ser desfeita.')) {
+    samples = [];
+    calculatedResults = [];
+    document.getElementById('samples-container').innerHTML = '';
+    document.getElementById('results-section').style.display = 'none';
+    document.getElementById('summary-section').style.display = 'none';
+    updateSampleCount();
+    console.log('Todas as amostras foram limpas');
+  }
+}
+
+function updateSampleCount() {
+  const countElement = document.getElementById('sample-count');
+  if (countElement) {
+    countElement.textContent = samples.length;
+  }
+}
+
+// Funções de validação
+function validateGlobalConfig() {
+  const required = ['cultura', 'sistema-manejo', 'cultura-antecessora', 'expectativa-produtividade'];
+  let valid = true;
+  const errors = [];
+  
+  for (const fieldId of required) {
+    const field = document.getElementById(fieldId);
+    if (!field.value.trim()) {
+      field.classList.add('error');
+      errors.push(field.previousElementSibling.textContent.replace(' *', ''));
+      valid = false;
+    } else {
+      field.classList.remove('error');
+    }
+  }
+  
+  if (!valid) {
+    showAlert('Campos obrigatórios', `Preencha os seguintes campos: ${errors.join(', ')}`);
+  }
+  
+  return valid;
+}
+
+function validateSample(sample) {
+  const required = ['local', 'ph', 'materia_organica', 'p_disponivel', 'k_disponivel', 
+                   'ca_trocavel', 'mg_trocavel', 'ctc_ph7', 'argila'];
+  let valid = true;
+  
+  for (const field of required) {
+    if (!sample[field] || sample[field].toString().trim() === '') {
+      const input = document.querySelector(`[data-sample="${sample.id}"][data-field="${field}"]`);
+      if (input) {
+        input.classList.add('error');
+        if (!input.parentNode.querySelector('.error-message')) {
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'error-message';
+          errorMsg.textContent = 'Campo obrigatório';
+          input.parentNode.appendChild(errorMsg);
         }
-        updateSampleCounter();
-        updateGlobalResults();
+      }
+      valid = false;
     }
+  }
+  
+  return valid;
 }
 
-// Função para calcular resultados da amostra
-function calculateSampleResults(sample) {
-    // Verificar se todos os campos obrigatórios estão preenchidos
-    const requiredFields = ['local', 'ph', 'mo', 'p', 'k', 'ca', 'mg', 'ctc', 'argila'];
-    const isComplete = requiredFields.every(field => sample[field] && sample[field] !== '');
-
-    if (!isComplete) {
-        updateSampleResultsDisplay(sample.id, null);
-        return;
+// Funções de cálculo
+function calculateAll() {
+  console.log('Iniciando cálculos...');
+  
+  if (!validateGlobalConfig()) {
+    return;
+  }
+  
+  if (samples.length === 0) {
+    showAlert('Nenhuma amostra', 'Adicione pelo menos uma amostra para calcular.');
+    return;
+  }
+  
+  let hasValidSamples = false;
+  calculatedResults = [];
+  
+  for (const sample of samples) {
+    if (validateSample(sample)) {
+      try {
+        const result = calculateSampleNPK(sample);
+        calculatedResults.push(result);
+        hasValidSamples = true;
+        console.log(`Amostra ${sample.id} calculada com sucesso`);
+      } catch (error) {
+        console.error(`Erro ao calcular amostra ${sample.id}:`, error);
+        showAlert('Erro no cálculo', `Erro ao calcular amostra ${sample.id}: ${error.message}`);
+      }
+    } else {
+      console.log(`Amostra ${sample.id} possui campos obrigatórios vazios`);
     }
-
-    const cultura = document.getElementById('cultura').value;
-    const expectativaProd = parseFloat(document.getElementById('expectativa_produtividade').value);
-
-    if (!cultura || !expectativaProd) {
-        updateSampleResultsDisplay(sample.id, null);
-        return;
-    }
-
-    // Converter valores para números
-    const values = {
-        ph: parseFloat(sample.ph),
-        mo: parseFloat(sample.mo),
-        p: parseFloat(sample.p),
-        k: parseFloat(sample.k),
-        ca: parseFloat(sample.ca),
-        mg: parseFloat(sample.mg),
-        al: parseFloat(sample.al) || 0,
-        ctc: parseFloat(sample.ctc),
-        argila: parseFloat(sample.argila)
-    };
-
-    // Classificar P baseado na argila
-    const nivelP = classifyP(values.p, values.argila);
-
-    // Classificar K baseado na CTC
-    const nivelK = classifyK(values.k, values.ctc);
-
-    // Classificar MO
-    const nivelMO = classifyMO(values.mo);
-
-    // Calcular recomendações NPK
-    const recomendacoes = calculateNPKRecommendations(cultura, nivelP, nivelK, nivelMO, expectativaProd);
-
-    if (recomendacoes) {
-        const results = {
-            nivelP,
-            nivelK,
-            nivelMO,
-            ...recomendacoes
-        };
-
-        sample.results = results;
-        updateSampleResultsDisplay(sample.id, results);
-        updateGlobalResults();
-    }
+  }
+  
+  if (!hasValidSamples) {
+    showAlert('Amostras inválidas', 'Preencha todos os campos obrigatórios das amostras antes de calcular.');
+    return;
+  }
+  
+  updateResults();
+  updateSummary();
+  
+  console.log(`${calculatedResults.length} amostras calculadas com sucesso`);
 }
 
-// Função para classificar P baseado na argila
-function classifyP(pValue, argilaValue) {
-    let argilaClass;
-    if (argilaValue <= 20) argilaClass = 'argila_0_20';
-    else if (argilaValue <= 40) argilaClass = 'argila_21_40';
-    else if (argilaValue <= 60) argilaClass = 'argila_41_60';
-    else argilaClass = 'argila_maior_60';
-
-    const ranges = NPK_DATA.interpretacao_P[argilaClass];
-
-    for (const [level, range] of Object.entries(ranges)) {
-        if (pValue >= range[0] && pValue <= range[1]) {
-            return level;
-        }
+function calculateSampleNPK(sample) {
+  const cultura = document.getElementById('cultura').value;
+  const culturaAntecessora = document.getElementById('cultura-antecessora').value;
+  const expectativa = parseFloat(document.getElementById('expectativa-produtividade').value);
+  
+  const p = parseFloat(sample.p_disponivel);
+  const k = parseFloat(sample.k_disponivel);
+  const mo = parseFloat(sample.materia_organica);
+  const argila = parseFloat(sample.argila);
+  const ctc = parseFloat(sample.ctc_ph7);
+  
+  // Validar valores numéricos
+  if (isNaN(p) || isNaN(k) || isNaN(mo) || isNaN(argila) || isNaN(ctc) || isNaN(expectativa)) {
+    throw new Error('Valores numéricos inválidos');
+  }
+  
+  // Classificação do P
+  let p_classe = 'medio';
+  if (argila <= 20) {
+    p_classe = classifyNutrient(p, NPK_DATA.interpretacao_P.argila_0_20);
+  } else if (argila <= 40) {
+    p_classe = classifyNutrient(p, NPK_DATA.interpretacao_P.argila_21_40);
+  } else if (argila <= 60) {
+    p_classe = classifyNutrient(p, NPK_DATA.interpretacao_P.argila_41_60);
+  } else {
+    p_classe = classifyNutrient(p, NPK_DATA.interpretacao_P.argila_maior_60);
+  }
+  
+  // Classificação do K
+  let k_classe = 'medio';
+  if (ctc <= 5) {
+    k_classe = classifyNutrient(k, NPK_DATA.interpretacao_K.CTC_baixa_0_5);
+  } else if (ctc <= 15) {
+    k_classe = classifyNutrient(k, NPK_DATA.interpretacao_K.CTC_media_5_15);
+  } else {
+    k_classe = classifyNutrient(k, NPK_DATA.interpretacao_K.CTC_alta_maior_15);
+  }
+  
+  // Classificação da MO
+  let mo_classe = 'baixo';
+  if (mo <= 2.5) {
+    mo_classe = 'baixo';
+  } else if (mo <= 5.0) {
+    mo_classe = 'medio';
+  } else {
+    mo_classe = 'alto';
+  }
+  
+  // Cálculo do N
+  const nData = NPK_DATA.recomendacao_N[cultura];
+  if (!nData) {
+    throw new Error(`Dados de N não encontrados para a cultura: ${cultura}`);
+  }
+  
+  let indice_mo = 0;
+  if (mo <= 2.5) indice_mo = 0;
+  else if (mo <= 5.0) indice_mo = 1;
+  else indice_mo = 2;
+  
+  const dose_base_n = nData.doses_base[culturaAntecessora][indice_mo];
+  const incremento_n = Math.max(0, expectativa - nData.rendimento_base) * nData.incremento_por_tonelada;
+  const n_total = dose_base_n + incremento_n;
+  
+  // Cálculo do P2O5
+  const p_correcao = NPK_DATA.correcao_P2O5[p_classe];
+  const p_manutencao = expectativa * NPK_DATA.exportacao_culturas[cultura].P2O5;
+  const p2o5_total = p_correcao + p_manutencao;
+  
+  // Cálculo do K2O
+  const k_correcao = NPK_DATA.correcao_K2O[k_classe];
+  const k_manutencao = expectativa * NPK_DATA.exportacao_culturas[cultura].K2O;
+  const k2o_total = k_correcao + k_manutencao;
+  
+  return {
+    sampleId: sample.id,
+    sampleName: sample.local || `Amostra ${sample.id.split('-')[1]}`,
+    classifications: {
+      p: p_classe,
+      k: k_classe,
+      mo: mo_classe
+    },
+    nutrients: {
+      n: Math.round(n_total),
+      p2o5: {
+        correcao: p_correcao,
+        manutencao: Math.round(p_manutencao),
+        total: Math.round(p2o5_total)
+      },
+      k2o: {
+        correcao: k_correcao,
+        manutencao: Math.round(k_manutencao),
+        total: Math.round(k2o_total)
+      }
     }
-    return 'muito_alto';
+  };
 }
 
-// Função para classificar K baseado na CTC
-function classifyK(kValue, ctcValue) {
-    let ctcClass;
-    if (ctcValue <= 5) ctcClass = 'CTC_baixa_0_5';
-    else if (ctcValue <= 15) ctcClass = 'CTC_media_5_15';
-    else ctcClass = 'CTC_alta_maior_15';
-
-    const ranges = NPK_DATA.interpretacao_K[ctcClass];
-
-    for (const [level, range] of Object.entries(ranges)) {
-        if (kValue >= range[0] && kValue <= range[1]) {
-            return level;
-        }
+function classifyNutrient(value, ranges) {
+  for (const [level, range] of Object.entries(ranges)) {
+    if (value >= range[0] && value <= range[1]) {
+      return level;
     }
-    return 'muito_alto';
+  }
+  return 'medio';
 }
 
-// Função para classificar MO
-function classifyMO(moValue) {
-    const ranges = NPK_DATA.interpretacao_MO;
-
-    for (const [level, range] of Object.entries(ranges)) {
-        if (moValue >= range[0] && moValue <= range[1]) {
-            return level;
-        }
-    }
-    return 'muito_alto';
-}
-
-// Função para calcular recomendações NPK
-function calculateNPKRecommendations(cultura, nivelP, nivelK, nivelMO, expectativaProd) {
-    const culturaData = NPK_DATA.recomendacoes_NPK[cultura];
-    if (!culturaData) return null;
-
-    // Recomendação de N (simplificado - usando base)
-    const recomendacaoN = culturaData.N.base;
-
-    // Recomendação de P2O5
-    const doseP = culturaData.P2O5[nivelP] || [0, 0];
-    let recomendacaoP1 = doseP[0];
-    let recomendacaoP2 = doseP[1];
-
-    // Recomendação de K2O
-    const doseK = culturaData.K2O[nivelK] || [0, 0];
-    let recomendacaoK1 = doseK[0];
-    let recomendacaoK2 = doseK[1];
-
-    // Ajuste para expectativa de produtividade diferente da referência (manual RS/SC)
-    const prodExtra = Math.max(0, expectativaProd - culturaData.rendimento_ref);
-
-    // Valores por tonelada adicional (se existirem na sua tabela)
-    const exportacaoP = culturaData.exportacao && culturaData.exportacao.P2O5 ? culturaData.exportacao.P2O5 : 0;
-    const exportacaoK = culturaData.exportacao && culturaData.exportacao.K2O ? culturaData.exportacao.K2O : 0;
-
-    recomendacaoP1 += Math.round(exportacaoP * prodExtra);
-    recomendacaoK1 += Math.round(exportacaoK * prodExtra);
-    // Se desejar ajustar também recomendacaoP2 e K2 para o segundo cultivo, aplique lógica similar (só faça se o manual indicar!)
-
-
-    return {
-        recomendacaoN,
-        recomendacaoP1,
-        recomendacaoP2,
-        recomendacaoK1,
-        recomendacaoK2
-    };
-}
-
-// Função para atualizar display dos resultados da amostra
-function updateSampleResultsDisplay(sampleId, results) {
-    const resultsDiv = document.getElementById(`results-${sampleId}`);
-
-    if (!results) {
-        resultsDiv.innerHTML = `
-      <div class="results-title">Resultados</div>
-      <div class="result-item">
-        <span class="result-label">Preencha os campos obrigatórios e configure a cultura para ver os resultados</span>
+function updateResults() {
+  const container = document.getElementById('results-container');
+  const section = document.getElementById('results-section');
+  
+  if (!container || !section) {
+    console.error('Elementos de resultado não encontrados');
+    return;
+  }
+  
+  if (calculatedResults.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+  
+  container.innerHTML = '';
+  
+  for (const result of calculatedResults) {
+    const resultDiv = document.createElement('div');
+    resultDiv.className = 'result-card';
+    
+    resultDiv.innerHTML = `
+      <div class="result-header">
+        <h4>${result.sampleName}</h4>
+      </div>
+      <div class="result-body">
+        <div class="result-grid">
+          <div class="result-item">
+            <h5>Classificações</h5>
+            <p>P: <span class="classification classification--${result.classifications.p}">${formatClassification(result.classifications.p)}</span></p>
+            <p>K: <span class="classification classification--${result.classifications.k}">${formatClassification(result.classifications.k)}</span></p>
+            <p>MO: <span class="classification classification--${result.classifications.mo}">${formatClassification(result.classifications.mo)}</span></p>
+          </div>
+          <div class="result-item">
+            <h5>Recomendações</h5>
+            <p><strong>N:</strong> ${result.nutrients.n} kg/ha</p>
+            <p><strong>P₂O₅:</strong> ${result.nutrients.p2o5.total} kg/ha</p>
+            <p><strong>K₂O:</strong> ${result.nutrients.k2o.total} kg/ha</p>
+          </div>
+        </div>
+        
+        <div class="nutrient-detail">
+          <h6>Detalhamento P₂O₅</h6>
+          <p>Correção: ${result.nutrients.p2o5.correcao} kg/ha + Manutenção: ${result.nutrients.p2o5.manutencao} kg/ha = Total: ${result.nutrients.p2o5.total} kg/ha</p>
+        </div>
+        
+        <div class="nutrient-detail">
+          <h6>Detalhamento K₂O</h6>
+          <p>Correção: ${result.nutrients.k2o.correcao} kg/ha + Manutenção: ${result.nutrients.k2o.manutencao} kg/ha = Total: ${result.nutrients.k2o.total} kg/ha</p>
+        </div>
       </div>
     `;
-        return;
-    }
+    
+    container.appendChild(resultDiv);
+  }
+  
+  section.style.display = 'block';
+  
+  // Scroll para os resultados
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-    const nivelPLabel = formatNivelLabel(results.nivelP);
-    const nivelKLabel = formatNivelLabel(results.nivelK);
-    const nivelMOLabel = formatNivelLabel(results.nivelMO);
-
-    resultsDiv.innerHTML = `
-    <div class="results-title">Resultados</div>
-    <div class="result-item">
-      <span class="result-label">Nível P:</span>
-      <span class="result-value nivel-${results.nivelP}">${nivelPLabel}</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">Nível K:</span>
-      <span class="result-value nivel-${results.nivelK}">${nivelKLabel}</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">Nível MO:</span>
-      <span class="result-value nivel-${results.nivelMO}">${nivelMOLabel}</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">N (kg/ha):</span>
-      <span class="result-value">${results.recomendacaoN}</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">P₂O₅ 1º cultivo:</span>
-      <span class="result-value">${results.recomendacaoP1} kg/ha</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">P₂O₅ 2º cultivo:</span>
-      <span class="result-value">${results.recomendacaoP2} kg/ha</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">K₂O 1º cultivo:</span>
-      <span class="result-value">${results.recomendacaoK1} kg/ha</span>
-    </div>
-    <div class="result-item">
-      <span class="result-label">K₂O 2º cultivo:</span>
-      <span class="result-value">${results.recomendacaoK2} kg/ha</span>
+function updateSummary() {
+  const container = document.getElementById('summary-container');
+  const section = document.getElementById('summary-section');
+  
+  if (!container || !section) {
+    console.error('Elementos de resumo não encontrados');
+    return;
+  }
+  
+  if (calculatedResults.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+  
+  const totalAmostras = calculatedResults.length;
+  const mediaN = calculatedResults.reduce((sum, r) => sum + r.nutrients.n, 0) / totalAmostras;
+  const mediaP = calculatedResults.reduce((sum, r) => sum + r.nutrients.p2o5.total, 0) / totalAmostras;
+  const mediaK = calculatedResults.reduce((sum, r) => sum + r.nutrients.k2o.total, 0) / totalAmostras;
+  
+  // Custo estimado (valores aproximados em R$/kg)
+  const custoN = 3.5;
+  const custoP = 4.2;
+  const custoK = 3.8;
+  const area = parseFloat(document.getElementById('area-total').value) || 1;
+  
+  const custoTotal = (mediaN * custoN + mediaP * custoP + mediaK * custoK) * area;
+  
+  container.innerHTML = `
+    <div class="summary-grid">
+      <div class="summary-item">
+        <h4>Total de Amostras</h4>
+        <div class="summary-value">${totalAmostras}</div>
+        <p>amostras calculadas</p>
+      </div>
+      <div class="summary-item">
+        <h4>Média N</h4>
+        <div class="summary-value">${Math.round(mediaN)}</div>
+        <p>kg/ha</p>
+      </div>
+      <div class="summary-item">
+        <h4>Média P₂O₅</h4>
+        <div class="summary-value">${Math.round(mediaP)}</div>
+        <p>kg/ha</p>
+      </div>
+      <div class="summary-item">
+        <h4>Média K₂O</h4>
+        <div class="summary-value">${Math.round(mediaK)}</div>
+        <p>kg/ha</p>
+      </div>
+      <div class="summary-item">
+        <h4>Custo Estimado</h4>
+        <div class="summary-value">R$ ${custoTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+        <p>para ${area} ha</p>
+      </div>
     </div>
   `;
+  
+  section.style.display = 'block';
 }
 
-// Função para formatar labels dos níveis
-function formatNivelLabel(nivel) {
-    const labels = {
-        'muito_baixo': 'Muito Baixo',
-        'baixo': 'Baixo',
-        'medio': 'Médio',
-        'alto': 'Alto',
-        'muito_alto': 'Muito Alto'
-    };
-    return labels[nivel] || nivel;
+function formatClassification(classification) {
+  const labels = {
+    muito_baixo: 'Muito Baixo',
+    baixo: 'Baixo',
+    medio: 'Médio',
+    alto: 'Alto',
+    muito_alto: 'Muito Alto'
+  };
+  return labels[classification] || classification;
 }
 
-// Função para calcular todas as amostras
-function calculateAll() {
-    appState.samples.forEach(sample => {
-        calculateSampleResults(sample);
-    });
-}
-
-// Função para limpar tudo
-function clearAll() {
-    if (confirm('Tem certeza que deseja limpar todas as amostras e configurações?')) {
-        appState.samples = [];
-        appState.sampleCounter = 0;
-        document.getElementById('samplesContainer').innerHTML = '';
-
-        // Limpar configurações globais
-        const globalFields = ['municipio', 'fazenda', 'talhao', 'cultura', 'sistema_manejo', 'area_total', 'expectativa_produtividade'];
-        globalFields.forEach(field => {
-            const element = document.getElementById(field);
-            if (element) element.value = '';
-        });
-
-        updateSampleCounter();
-        updateGlobalResults();
-    }
-}
-
-// Função para atualizar contador de amostras
-function updateSampleCounter() {
-    const counterElement = document.getElementById('samplesCount');
-    if (counterElement) {
-        counterElement.textContent = appState.samples.length;
-    }
-}
-
-// Função para validar configurações globais
-function validateGlobalConfig() {
-    // Recalcular todas as amostras quando configurações globais mudarem
-    appState.samples.forEach(sample => {
-        calculateSampleResults(sample);
-    });
-}
-
-// Função para atualizar resultados globais
-function updateGlobalResults() {
-    const globalResults = document.getElementById('globalResults');
-    const samplesWithResults = appState.samples.filter(s => s.results);
-
-    if (samplesWithResults.length === 0) {
-        globalResults.classList.add('hidden');
-        return;
-    }
-
-    // Calcular médias e totais
-    const totalN = samplesWithResults.reduce((sum, s) => sum + s.results.recomendacaoN, 0);
-    const totalP1 = samplesWithResults.reduce((sum, s) => sum + s.results.recomendacaoP1, 0);
-    const totalK1 = samplesWithResults.reduce((sum, s) => sum + s.results.recomendacaoK1, 0);
-
-    const avgN = Math.round(totalN / samplesWithResults.length);
-    const avgP1 = Math.round(totalP1 / samplesWithResults.length);
-    const avgK1 = Math.round(totalK1 / samplesWithResults.length);
-
-    const summary = document.getElementById('globalSummary');
-    if (summary) {
-        summary.innerHTML = `
-      <div class="summary-grid">
-        <div class="summary-item">
-          <h4>Amostras Calculadas</h4>
-          <div class="value">${samplesWithResults.length}</div>
-        </div>
-        <div class="summary-item">
-          <h4>Média N (kg/ha)</h4>
-          <div class="value">${avgN}</div>
-        </div>
-        <div class="summary-item">
-          <h4>Média P₂O₅ (kg/ha)</h4>
-          <div class="value">${avgP1}</div>
-        </div>
-        <div class="summary-item">
-          <h4>Média K₂O (kg/ha)</h4>
-          <div class="value">${avgK1}</div>
-        </div>
-      </div>
-    `;
-    }
-
-    globalResults.classList.remove('hidden');
-}
-
-// Função para exportar CSV
+// Função de exportação CSV
 function exportCSV() {
-    if (appState.samples.length === 0) {
-        alert('Não há amostras para exportar.');
-        return;
+  console.log('Iniciando exportação CSV...');
+  
+  if (calculatedResults.length === 0) {
+    showAlert('Nenhum resultado', 'Execute os cálculos antes de exportar os dados.');
+    return;
+  }
+  
+  try {
+    const csv = generateCSVContent();
+    downloadCSV(csv, 'recomendacao_npk.csv');
+    console.log('CSV exportado com sucesso');
+  } catch (error) {
+    console.error('Erro na exportação CSV:', error);
+    showAlert('Erro na exportação', 'Ocorreu um erro ao gerar o arquivo CSV: ' + error.message);
+  }
+}
+
+function generateCSVContent() {
+  let csv = '';
+  const now = new Date().toLocaleString('pt-BR');
+  
+  // Cabeçalho com configurações globais
+  csv += '# RELATÓRIO DE RECOMENDAÇÃO DE ADUBAÇÃO NPK\n';
+  csv += `# Gerado em: ${now}\n`;
+  csv += `# Município: ${document.getElementById('municipio').value || 'Não informado'}\n`;
+  csv += `# Fazenda: ${document.getElementById('fazenda').value || 'Não informado'}\n`;
+  csv += `# Talhão: ${document.getElementById('talhao').value || 'Não informado'}\n`;
+  csv += `# Cultura: ${document.getElementById('cultura').value}\n`;
+  csv += `# Sistema de Manejo: ${document.getElementById('sistema-manejo').value}\n`;
+  csv += `# Cultura Antecessora: ${document.getElementById('cultura-antecessora').value}\n`;
+  csv += `# Área Total (ha): ${document.getElementById('area-total').value || 'Não informado'}\n`;
+  csv += `# Expectativa de Produtividade (t/ha): ${document.getElementById('expectativa-produtividade').value}\n`;
+  csv += '\n';
+  
+  // Cabeçalhos das colunas
+  const headers = [
+    'ID_Amostra', 'Local', 'pH', 'MO_%', 'P_mg_dm3', 'K_mg_dm3', 
+    'Ca_cmolc_dm3', 'Mg_cmolc_dm3', 'Al_cmolc_dm3', 'CTC_pH7', 'Argila_%',
+    'Nivel_P', 'Nivel_K', 'Nivel_MO', 'N_kg_ha', 'P2O5_Total_kg_ha', 
+    'P2O5_Correcao', 'P2O5_Manutencao', 'K2O_Total_kg_ha', 'K2O_Correcao', 'K2O_Manutencao'
+  ];
+  csv += headers.join(',') + '\n';
+  
+  // Dados das amostras
+  for (const result of calculatedResults) {
+    const sample = samples.find(s => s.id === result.sampleId);
+    if (sample) {
+      const row = [
+        result.sampleId,
+        `"${sample.local}"`,
+        sample.ph,
+        sample.materia_organica,
+        sample.p_disponivel,
+        sample.k_disponivel,
+        sample.ca_trocavel,
+        sample.mg_trocavel,
+        sample.al_trocavel || '',
+        sample.ctc_ph7,
+        sample.argila,
+        formatClassification(result.classifications.p),
+        formatClassification(result.classifications.k),
+        formatClassification(result.classifications.mo),
+        result.nutrients.n,
+        result.nutrients.p2o5.total,
+        result.nutrients.p2o5.correcao,
+        result.nutrients.p2o5.manutencao,
+        result.nutrients.k2o.total,
+        result.nutrients.k2o.correcao,
+        result.nutrients.k2o.manutencao
+      ];
+      csv += row.join(',') + '\n';
     }
+  }
+  
+  return csv;
+}
 
-    let csv = '';
+function downloadCSV(content, filename) {
+  const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  const url = URL.createObjectURL(blob);
+  
+  link.setAttribute('href', url);
+  link.setAttribute('download', filename);
+  link.style.visibility = 'hidden';
+  
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
-    // Cabeçalho com configurações globais
-    csv += 'CONFIGURAÇÕES GLOBAIS\n';
-    csv += `Município,${document.getElementById('municipio').value || 'N/A'}\n`;
-    csv += `Fazenda,${document.getElementById('fazenda').value || 'N/A'}\n`;
-    csv += `Talhão,${document.getElementById('talhao').value || 'N/A'}\n`;
-    csv += `Cultura,${document.getElementById('cultura').value || 'N/A'}\n`;
-    csv += `Sistema de Manejo,${document.getElementById('sistema_manejo').value || 'N/A'}\n`;
-    csv += `Área Total (ha),${document.getElementById('area_total').value || 'N/A'}\n`;
-    csv += `Expectativa Produtividade (t/ha),${document.getElementById('expectativa_produtividade').value || 'N/A'}\n`;
-    csv += `Data/Hora,${new Date().toLocaleString('pt-BR')}\n\n`;
+// Funções de modal
+function showAlert(title, message) {
+  const modal = document.getElementById('alert-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMessage = document.getElementById('modal-message');
+  
+  if (modal && modalTitle && modalMessage) {
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+    modal.classList.remove('hidden');
+  } else {
+    // Fallback para alert nativo se modal não estiver disponível
+    alert(`${title}: ${message}`);
+  }
+}
 
-    // Cabeçalho das amostras
-    csv += 'DADOS DAS AMOSTRAS\n';
-    csv += 'ID,Local,pH,MO(%),P(mg/dm³),K(mg/dm³),Ca(cmolc/dm³),Mg(cmolc/dm³),Al(cmolc/dm³),CTC(cmolc/dm³),Argila(%),Nível P,Nível K,Nível MO,N(kg/ha),P₂O₅ 1º(kg/ha),P₂O₅ 2º(kg/ha),K₂O 1º(kg/ha),K₂O 2º(kg/ha)\n';
-
-    // Dados das amostras
-    appState.samples.forEach(sample => {
-        const results = sample.results;
-        csv += `${sample.id},`;
-        csv += `${sample.local || ''},`;
-        csv += `${sample.ph || ''},`;
-        csv += `${sample.mo || ''},`;
-        csv += `${sample.p || ''},`;
-        csv += `${sample.k || ''},`;
-        csv += `${sample.ca || ''},`;
-        csv += `${sample.mg || ''},`;
-        csv += `${sample.al || ''},`;
-        csv += `${sample.ctc || ''},`;
-        csv += `${sample.argila || ''},`;
-
-        if (results) {
-            csv += `${formatNivelLabel(results.nivelP)},`;
-            csv += `${formatNivelLabel(results.nivelK)},`;
-            csv += `${formatNivelLabel(results.nivelMO)},`;
-            csv += `${results.recomendacaoN},`;
-            csv += `${results.recomendacaoP1},`;
-            csv += `${results.recomendacaoP2},`;
-            csv += `${results.recomendacaoK1},`;
-            csv += `${results.recomendacaoK2}`;
-        } else {
-            csv += ',,,,,,,';
-        }
-        csv += '\n';
-    });
-
-    // Download do arquivo
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.setAttribute('href', url);
-    link.setAttribute('download', `recomendacao_npk_${new Date().toISOString().split('T')[0]}.csv`);
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+function closeModal() {
+  const modal = document.getElementById('alert-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
 }
