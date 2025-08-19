@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Adubação NPK - Crop Jr</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">CROP JR</div>
+                    <div class="logo-subtitle">Consultoria Agro - UFSM</div>
+                </div>
+                <div class="title-section">
+                    <h1>Sistema de Adubação NPK v1.0 - Múltiplas Amostras</h1>
+                    <p class="subtitle">Manual RS/SC - UFSM</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Como usar o sistema -->
+        <section class="how-to-use">
+            <button class="how-to-toggle" onclick="toggleHowTo()">
+                <span>Como usar o sistema</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="how-to-content hidden" id="howToContent">
+                <div class="how-to-steps">
+                    <ol>
+                        <li>Preencha as <strong>Configurações Globais</strong> que se aplicam a todas as amostras</li>
+                        <li>Adicione uma ou mais <strong>amostras de solo</strong> com os dados da análise</li>
+                        <li>Os <strong>resultados são calculados automaticamente</strong> conforme você preenche os campos</li>
+                        <li>Visualize as <strong>recomendações de NPK</strong> e níveis de fertilidade para cada amostra</li>
+                        <li>Use o botão <strong>"Exportar CSV"</strong> para salvar os resultados</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configurações Globais -->
+        <section class="global-config card">
+            <h2>Configurações Globais</h2>
+            <div class="config-grid">
+                <div class="form-group">
+                    <label class="form-label" for="municipio">Município *</label>
+                    <input type="text" id="municipio" class="form-control" placeholder="Ex: Santa Maria">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="fazenda">Fazenda *</label>
+                    <input type="text" id="fazenda" class="form-control" placeholder="Ex: Fazenda São João">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="talhao">Talhão *</label>
+                    <input type="text" id="talhao" class="form-control" placeholder="Ex: Talhão A1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="cultura">Cultura *</label>
+                    <select id="cultura" class="form-control">
+                        <option value="">Selecione a cultura</option>
+                        <option value="Soja">Soja</option>
+                        <option value="Milho">Milho</option>
+                        <option value="Trigo">Trigo</option>
+                        <option value="Arroz irrigado">Arroz irrigado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="sistema_manejo">Sistema de Manejo *</label>
+                    <select id="sistema_manejo" class="form-control">
+                        <option value="">Selecione o sistema</option>
+                        <option value="Plantio Direto (Consolidado)">Plantio Direto (Consolidado)</option>
+                        <option value="Plantio Direto (Implantação)">Plantio Direto (Implantação)</option>
+                        <option value="Cultivo Convencional">Cultivo Convencional</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="area_total">Área Total (ha) *</label>
+                    <input type="number" id="area_total" class="form-control" step="0.1" min="0.1" placeholder="Ex: 50.5">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="expectativa_produtividade">Expectativa de Produtividade (t/ha) *</label>
+                    <input type="number" id="expectativa_produtividade" class="form-control" step="0.1" min="0.1" placeholder="Ex: 3.5">
+                </div>
+            </div>
+        </section>
+
+        <!-- Controles de Amostras -->
+        <section class="samples-controls">
+            <div class="controls-header">
+                <div class="samples-counter">
+                    <span>Amostras: <span id="samplesCount">0</span> / 100</span>
+                </div>
+                <div class="controls-buttons">
+                    <button class="btn btn--primary" id="addSampleBtn" onclick="addSample()">Adicionar Amostra</button>
+                    <button class="btn btn--secondary" onclick="calculateAll()">Calcular Todas</button>
+                    <button class="btn btn--outline" onclick="clearAll()">Limpar Tudo</button>
+                    <button class="btn btn--primary" onclick="exportCSV()">Exportar CSV</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Container de Amostras -->
+        <section class="samples-container" id="samplesContainer">
+            <!-- Amostras serão adicionadas dinamicamente aqui -->
+        </section>
+
+        <!-- Resultados Globais -->
+        <section class="global-results hidden" id="globalResults">
+            <div class="card">
+                <h2>Resumo Geral</h2>
+                <div id="globalSummary"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Crop Jr - Consultoria Agro UFSM. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
